@@ -9,7 +9,6 @@ A `SnackBar` in Flutter is a lightweight, temporary pop-up message displayed at 
 <p align="center">
   <img src="Notes_App_UI.jpeg" alt="Notes_App_UI" width="320"/>
 </p>
-![Project Screenshot](images/Notes_App_UI.jpeg)
 
 ---
 
