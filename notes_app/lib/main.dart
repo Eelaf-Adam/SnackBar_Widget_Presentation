@@ -29,28 +29,50 @@ class NoteScreen extends StatefulWidget {
 }
 
 class _NoteScreenState extends State<NoteScreen> {
+  // Controller to read and clear the input text
   final TextEditingController _noteController = TextEditingController();
 
   void _saveNote() {
     final noteText = _noteController.text.trim();
+
+    // Check if the user actually typed something
     if (noteText.isNotEmpty) {
-      // Property 1  
-      // Displays a message 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Note saved!'),
-          // Property 2
-          duration: Duration(seconds: 2),
-          // Property 3 
-          behavior: SnackBarBehavior.floating,
+        SnackBar(
+          // Property 1 - content: what the user sees inside the banner
+          content: const Text('Note saved!\nAutomatically disappears after 3 seconds'),
+
+          // Property 2 - duration: how long it stays (default is 4s, we set 3s)
+          duration: const Duration(seconds: 3),
+
+          // Property 3 - action: interactive button allowing the user to undo
+          action: SnackBarAction(
+            label: 'UNDO',
+            textColor: Colors.amber,
+            onPressed: () {
+              // Restore the note text back into the field
+              _noteController.text = noteText;
+            },
+          ),
         ),
       );
+
+      // Clear the field for the next note
       _noteController.clear();
+    } else {
+      // Friendly reminder if save was tapped on an empty note
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a note before saving!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
     }
   }
 
   @override
   void dispose() {
+    // Clean up controller to avoid memory leaks
     _noteController.dispose();
     super.dispose();
   }
@@ -67,6 +89,7 @@ class _NoteScreenState extends State<NoteScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Multiline input field for writing notes
             TextField(
               controller: _noteController,
               maxLines: 4,
@@ -77,6 +100,8 @@ class _NoteScreenState extends State<NoteScreen> {
               ),
             ),
             const SizedBox(height: 16),
+
+            // Save button that triggers our SnackBar demo
             ElevatedButton.icon(
               onPressed: _saveNote,
               icon: const Icon(Icons.save),
