@@ -32,9 +32,15 @@ class _NoteScreenState extends State<NoteScreen> {
   final TextEditingController _noteController = TextEditingController();
 
   void _saveNote() {
-    // Basic save action - SnackBar demonstration will be added in the next step
     final noteText = _noteController.text.trim();
     if (noteText.isNotEmpty) {
+      // Property 1: content (Required)
+      // Displays the message or widget inside the SnackBar
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Note saved!'),
+        ),
+      );
       _noteController.clear();
     }
   }
