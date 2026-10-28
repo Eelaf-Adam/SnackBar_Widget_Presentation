@@ -1,14 +1,15 @@
-# SnackBar Widget Presentation — Quick Notes Demo
+# SnackBar Widget Presentation Through Notes Taking App
 
-A Flutter demonstration app showing how to use the `SnackBar` widget to provide real-time feedback and undo actions in a notes application.
+A `SnackBar` in Flutter is a lightweight, temporary pop-up message displayed at the bottom of the screen to give quick feedback about an app process
 
 ---
 
 ## Final App UI
 
 <p align="center">
-  <img src="Notes_App_UI.jpg" alt="Notes App UI" width="320"/>
+  <img src="Notes_App_UI.jpeg" alt="Notes_App_UI" width="320"/>
 </p>
+![Project Screenshot](images/Notes_App_UI.jpeg)
 
 ---
 
