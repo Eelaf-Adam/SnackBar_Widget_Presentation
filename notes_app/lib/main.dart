@@ -34,14 +34,15 @@ class _NoteScreenState extends State<NoteScreen> {
   void _saveNote() {
     final noteText = _noteController.text.trim();
     if (noteText.isNotEmpty) {
-      // Property 1: content (Required)
-      // Displays the message or widget inside the SnackBar
+      // Property 1  
+      // Displays a message 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          // Property 1: content (Required)
           content: Text('Note saved!'),
-          // Property 2: duration (Default is 4 seconds)
+          // Property 2
           duration: Duration(seconds: 2),
+          // Property 3 
+          behavior: SnackBarBehavior.floating,
         ),
       );
       _noteController.clear();
